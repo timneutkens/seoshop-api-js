@@ -1,6 +1,6 @@
 {
   "name": "seoshop-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Api client for SEOshop",
   "main": "index.js",
   "author": "Tim Neutkens",
