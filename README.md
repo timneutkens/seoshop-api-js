@@ -1,5 +1,5 @@
 #SEOshop-api.js
-![Version](https://img.shields.io/npm/v/seoshop-api.svg) ![License](https://img.shields.io/npm/l/seoshop-api.svg)
+![Code Climate](https://img.shields.io/codeclimate/github/timneutkens1/seoshop-api-js.svg) ![Version](https://img.shields.io/npm/v/seoshop-api.svg) ![License](https://img.shields.io/npm/l/seoshop-api.svg)
 
 SEOshop api implementation for javascript. Based on [Superagent](https://github.com/visionmedia/superagent) and [Promises (bluebird)](https://github.com/petkaantonov/bluebird)
 
