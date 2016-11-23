@@ -1,37 +1,27 @@
+// Example is based on async await.
+
 // Require client
 const SEOshopApiClient = require('seoshop-api')
-// Create new client object
-const client = new SEOshopApiClient(apiKey, apiSecret)
-// Create new request function for dutch store
-const request = client.baseRequest('nl')
+
+const apiKey = ''
+const apiSecret = ''
+const language = 'nl'
+
+// Create client
+const SEOshop = SEOshopApiClient(apiKey, apiSecret, language)
 
 // Does a get to https://api.webshopapp.com/nl/products.json
-request
-  .get('products')
-  .then(function (res) {
-    console.log(res.body.products)
-  })
-  .catch(function (err) {
-    console.log(err)
-  })
+async function getProducts() {
+  try {
+    const response = await SEOshop('products')
+    const json = await response.json()
 
-// Some api endpoints return full urls in their response. For this purpose there is a authorizedRequest function
-// This function will only do basic auth and doesn't prefix and suffix the request url
-const authorizedRequest = client.authorizedRequest()
-authorizedRequest
-  .get('https://api.webshopapp.com/nl/products.json')
-  .then(function (res) {
-    console.log(res.body.products)
-  })
-  .catch(function (err) {
-    console.log(err)
-  })
+    return json
+  } catch (e) {
+    console.log('Error requesting products', e)
+    return {}
+  }
+}
 
-// The examples shown above use Promise style callbacks. You can also use a normal callback
-request
-  .get('products')
-  .end(function (err, res) {
-    if (!err) {
-      console.log(res.body.products)
-    }
-  })
+const products = getProducts()
+console.log(products)
