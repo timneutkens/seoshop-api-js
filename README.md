@@ -1,19 +1,34 @@
-#SEOshop-api.js
-![Code Climate](https://img.shields.io/codeclimate/github/timneutkens/seoshop-api-js.svg) ![Dependencies](https://img.shields.io/david/timneutkens/seoshop-api-js.svg)
-[![Js Standard Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-![Version](https://img.shields.io/npm/v/seoshop-api.svg) ![License](https://img.shields.io/npm/l/seoshop-api.svg)
+# Lightspeed eCom isomorphic api client
 
+Lightspeed eCom API implementation for Javascript.
 
-SEOshop api implementation for javascript. Based on [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)
+## Usage
 
-Uses es2015 / es6 classes. You might need to use [Babel](https://babeljs.io/) if you're using an old version of node.js / in browsers
+`npm install --save lightspeed-ecom`
 
-##Usage
+## Example
 
-`npm install --save seoshop-api`
+```js
+const apiClient = require('lightspeed-ecom')
 
-[Example request code here (examples/example.js)](examples/example.js)
+const apiKey = ''
+const apiSecret = ''
+const language = ''
+const cluster = 'api.webshopapp.com' // See http://developers.lightspeedhq.com/ecom/introduction/introduction/
 
-###License
-MIT
-[View here](LICENSE.md)
+const fetch = apiClient(apiKey, apiSecret, language, cluster)
+
+async function getProducts() {
+    const res = await fetch('products') // Can be any resource documented. In this case http://developers.lightspeedhq.com/ecom/endpoints/product/
+    const json = await res.json()
+
+    return json
+}
+
+async function logProducts() {
+    const products = await getProducts()
+    console.log(products)
+}
+
+logProducts()
+```
